@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://cax2xbdkfnc01"]
+[gd_scene load_steps=7 format=3 uid="uid://cax2xbdkfnc01"]
 
 [ext_resource type="Script" uid="uid://omirdg4jrmwy" path="res://main.gd" id="1_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://wdoh6qthncgh" path="res://level_one.tscn" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://dbf3pie0tu4ky" path="res://Map/map.tscn" id="2_h2yge"]
+[ext_resource type="PackedScene" uid="uid://dj4xa457yrikd" path="res://Player/player.tscn" id="3_1bvp3"]
 
 [sub_resource type="SystemFont" id="SystemFont_ig7tw"]
 font_names = PackedStringArray("Monospace")
@@ -13,9 +15,15 @@ default_font_size = 50
 [node name="Main" type="Node2D"]
 script = ExtResource("1_0xm2m")
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Map" parent="." instance=ExtResource("2_h2yge")]
+position = Vector2(0, -95)
 
 [node name="LevelOne" parent="." instance=ExtResource("1_ig7tw")]
+
+[node name="Player" parent="." instance=ExtResource("3_1bvp3")]
+position = Vector2(-565, 309)
+
+[node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="WinMessage" type="Label" parent="."]
 visible = false
@@ -25,3 +33,6 @@ offset_right = 120.0
 offset_bottom = -303.0
 theme = SubResource("Theme_0xm2m")
 text = "Yahoo!!!"
+
+[node name="Exit" type="Node2D" parent="."]
+position = Vector2(-61, -1010)

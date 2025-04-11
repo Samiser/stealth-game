@@ -11,6 +11,9 @@ signal tile_entered(tile: Area2D, area: Area2D)
 func set_color(color: Color):
 	color_rect.color = color
 
+func stop():
+	$CollisionShape2D.free()
+
 func _ready() -> void:
 	print("node ready")
 
