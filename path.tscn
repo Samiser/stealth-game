@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://rhqlwisvydf6"]
+
+[ext_resource type="Script" uid="uid://005kr1u74lve" path="res://path.gd" id="1_ckofj"]
+
+[node name="Path" type="Node2D" node_paths=PackedStringArray("start")]
+script = ExtResource("1_ckofj")
+start = NodePath("")

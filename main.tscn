@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://cax2xbdkfnc01"]
+
+[ext_resource type="Script" uid="uid://omirdg4jrmwy" path="res://main.gd" id="1_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://wdoh6qthncgh" path="res://level_one.tscn" id="1_ig7tw"]
+
+[sub_resource type="SystemFont" id="SystemFont_ig7tw"]
+font_names = PackedStringArray("Monospace")
+
+[sub_resource type="Theme" id="Theme_0xm2m"]
+default_font = SubResource("SystemFont_ig7tw")
+default_font_size = 50
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_0xm2m")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="LevelOne" parent="." instance=ExtResource("1_ig7tw")]
+
+[node name="WinMessage" type="Label" parent="."]
+visible = false
+offset_left = -120.0
+offset_top = -354.0
+offset_right = 120.0
+offset_bottom = -303.0
+theme = SubResource("Theme_0xm2m")
+text = "Yahoo!!!"
