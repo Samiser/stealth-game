@@ -1,0 +1,72 @@
+[gd_scene load_steps=5 format=3 uid="uid://d4e6patdp0uyn"]
+
+[ext_resource type="Script" uid="uid://jot4wtmkcpl6" path="res://Levels/level.gd" id="1_f4581"]
+[ext_resource type="PackedScene" uid="uid://rhqlwisvydf6" path="res://Levels/Path/path.tscn" id="2_bsuut"]
+[ext_resource type="PackedScene" uid="uid://b3c0s5md2autq" path="res://Levels/Path/path_node.tscn" id="3_kiou0"]
+[ext_resource type="PackedScene" uid="uid://b8j5ipbs63ohq" path="res://Items/Mushroom/mushroom.tscn" id="4_bsuut"]
+
+[node name="LevelTwo" type="Node2D"]
+script = ExtResource("1_f4581")
+
+[node name="Path" parent="." node_paths=PackedStringArray("start", "end") instance=ExtResource("2_bsuut")]
+start = NodePath("PathNode2")
+end = NodePath("PathNode13")
+
+[node name="PathNode" parent="Path" node_paths=PackedStringArray("neighbours") instance=ExtResource("3_kiou0")]
+position = Vector2(0, 384)
+neighbours = [NodePath("../PathNode4"), NodePath("../PathNode6")]
+
+[node name="PathNode2" parent="Path" node_paths=PackedStringArray("neighbours") instance=ExtResource("3_kiou0")]
+position = Vector2(192, 384)
+neighbours = [NodePath("../PathNode3")]
+
+[node name="PathNode3" parent="Path" node_paths=PackedStringArray("neighbours") instance=ExtResource("3_kiou0")]
+position = Vector2(192, 192)
+neighbours = [NodePath("../PathNode2"), NodePath("../PathNode4"), NodePath("../PathNode8")]
+
+[node name="PathNode4" parent="Path" node_paths=PackedStringArray("neighbours") instance=ExtResource("3_kiou0")]
+position = Vector2(0, 192)
+neighbours = [NodePath("../PathNode3"), NodePath("../PathNode"), NodePath("../PathNode5")]
+
+[node name="PathNode5" parent="Path" node_paths=PackedStringArray("neighbours") instance=ExtResource("3_kiou0")]
+position = Vector2(-192, 192)
+neighbours = [NodePath("../PathNode4"), NodePath("../PathNode6"), NodePath("../PathNode7")]
+
+[node name="PathNode6" parent="Path" node_paths=PackedStringArray("neighbours") instance=ExtResource("3_kiou0")]
+position = Vector2(-192, 384)
+neighbours = [NodePath("../PathNode5"), NodePath("../PathNode")]
+
+[node name="PathNode7" parent="Path" node_paths=PackedStringArray("neighbours") instance=ExtResource("3_kiou0")]
+position = Vector2(-192, 0)
+neighbours = [NodePath("../PathNode5"), NodePath("../PathNode10")]
+
+[node name="PathNode8" parent="Path" node_paths=PackedStringArray("neighbours") instance=ExtResource("3_kiou0")]
+position = Vector2(192, 0)
+neighbours = [NodePath("../PathNode3"), NodePath("../PathNode9"), NodePath("../PathNode12")]
+
+[node name="PathNode9" parent="Path" node_paths=PackedStringArray("neighbours") instance=ExtResource("3_kiou0")]
+neighbours = [NodePath("../PathNode8")]
+
+[node name="PathNode10" parent="Path" node_paths=PackedStringArray("neighbours") instance=ExtResource("3_kiou0")]
+position = Vector2(-192, -192)
+neighbours = [NodePath("../PathNode7"), NodePath("../PathNode11")]
+
+[node name="PathNode11" parent="Path" node_paths=PackedStringArray("neighbours") instance=ExtResource("3_kiou0")]
+position = Vector2(0, -192)
+neighbours = [NodePath("../PathNode10"), NodePath("../PathNode12")]
+
+[node name="PathNode12" parent="Path" node_paths=PackedStringArray("neighbours") instance=ExtResource("3_kiou0")]
+position = Vector2(192, -192)
+neighbours = [NodePath("../PathNode11"), NodePath("../PathNode8"), NodePath("../PathNode13")]
+
+[node name="PathNode13" parent="Path" node_paths=PackedStringArray("neighbours") instance=ExtResource("3_kiou0")]
+position = Vector2(192, -384)
+neighbours = [NodePath("../PathNode12")]
+
+[node name="Collectables" type="Node2D" parent="."]
+
+[node name="Mushroom2" parent="Collectables" instance=ExtResource("4_bsuut")]
+position = Vector2(192, 18)
+
+[node name="Mushroom" parent="Collectables" instance=ExtResource("4_bsuut")]
+position = Vector2(0, 400)

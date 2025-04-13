@@ -20,11 +20,12 @@ func move_to_tile(tile: Node2D):
 		self,
 		"position",
 		tile.global_position,
-		1).set_trans(Tween.TRANS_SINE)
+		0.5).set_trans(Tween.TRANS_SINE)
 	move_tween.tween_callback(idle)
 	current_tile = tile
 
-func move_to_next_level(start: Node2D):
+func move_to_next_level(level: Node2D):
+	var start = level.path.start
 	sprite.stop()
 	sprite.play("walk_right")
 	var move_tween: Tween = get_tree().create_tween()

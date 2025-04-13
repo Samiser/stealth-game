@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://wdoh6qthncgh"]
+[gd_scene load_steps=5 format=3 uid="uid://wdoh6qthncgh"]
 
-[ext_resource type="Script" uid="uid://jot4wtmkcpl6" path="res://level.gd" id="1_foyw7"]
-[ext_resource type="PackedScene" uid="uid://rhqlwisvydf6" path="res://path.tscn" id="1_ojold"]
-[ext_resource type="PackedScene" uid="uid://b3c0s5md2autq" path="res://path_node.tscn" id="3_eck3n"]
+[ext_resource type="Script" uid="uid://jot4wtmkcpl6" path="res://Levels/level.gd" id="1_foyw7"]
+[ext_resource type="PackedScene" uid="uid://rhqlwisvydf6" path="res://Levels/Path/path.tscn" id="1_ojold"]
+[ext_resource type="PackedScene" uid="uid://b3c0s5md2autq" path="res://Levels/Path/path_node.tscn" id="3_eck3n"]
+[ext_resource type="PackedScene" uid="uid://b8j5ipbs63ohq" path="res://Items/Mushroom/mushroom.tscn" id="4_eck3n"]
 
 [node name="LevelOne" type="Node2D"]
 script = ExtResource("1_foyw7")
@@ -37,3 +38,8 @@ neighbours = [NodePath("../PathNode5")]
 [node name="PathNode7" parent="Path" node_paths=PackedStringArray("neighbours") instance=ExtResource("3_eck3n")]
 position = Vector2(192, 192)
 neighbours = [NodePath("../PathNode3")]
+
+[node name="Collectables" type="Node2D" parent="."]
+
+[node name="Mushroom" parent="Collectables" instance=ExtResource("4_eck3n")]
+position = Vector2(192, 208)
