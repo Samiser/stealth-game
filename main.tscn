@@ -31,6 +31,7 @@ position = Vector2(-192, -1344)
 position = Vector2(-565, 309)
 
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(1.2, 1.2)
 
 [node name="WinMessage" type="Label" parent="."]
 visible = false

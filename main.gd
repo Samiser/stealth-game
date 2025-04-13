@@ -18,11 +18,23 @@ func _ready() -> void:
 
 func _on_finished_level():
 	current_level += 1
-	win_label.visible = true
-	player.move_to_next_level(levels.get_children()[current_level])
-	_move_camera_to(levels.get_children()[current_level])
-	
-func _move_camera_to(node: Node2D):
+	if current_level >= levels.get_child_count():
+		win_label.visible = true
+	else:
+		_zoom_to(player)
+		await get_tree().create_timer(5.0).timeout
+		player.move_to_next_level(levels.get_children()[current_level])
+		_move_camera_to(levels.get_children()[current_level])
+
+func _move_and_zoom(node, zoom, move_seconds):
 	var tween := create_tween()
 	tween.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
-	tween.tween_property(camera, "position", node.position, 3)
+	tween.tween_property(camera, "zoom", zoom, 1)
+	tween.parallel().tween_property(camera, "position", node.position, move_seconds)
+
+func _move_camera_to(node: Node2D):
+	_move_and_zoom(node, Vector2(1.2, 1.2), 3)
+
+func _zoom_to(node: Node2D):
+	_move_and_zoom(node, Vector2(3, 3), 1)
+	

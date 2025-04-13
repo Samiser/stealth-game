@@ -10,6 +10,7 @@ signal collected()
 
 var time_passed := 0.0
 var base_scale : Vector2
+var is_collected = false
 
 func _ready():
 	base_scale = scale
@@ -24,10 +25,11 @@ func _process(delta: float) -> void:
 
 func _on_area_entered(enterer: Area2D):
 	var parent = enterer.get_parent()
-	if parent.is_in_group("player"):
+	if parent.is_in_group("player") and is_collected == false:
 		_collect()
 
 func _collect():
+	is_collected = true
 	_play_collection_animation()
 	emit_signal("collected")
 

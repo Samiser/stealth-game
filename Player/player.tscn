@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://dj4xa457yrikd"]
+[gd_scene load_steps=43 format=3 uid="uid://dj4xa457yrikd"]
 
 [ext_resource type="Script" uid="uid://b7i5dgkv1hbme" path="res://Player/player.gd" id="1_onrkg"]
 [ext_resource type="Texture2D" uid="uid://d2lr6fquk60cb" path="res://Player/Resources/fHero_ [elf].png" id="2_4ntmi"]
@@ -58,14 +58,6 @@ region = Rect2(0, 0, 24, 24)
 [sub_resource type="AtlasTexture" id="AtlasTexture_dkpta"]
 atlas = ExtResource("2_4ntmi")
 region = Rect2(24, 0, 24, 24)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_lfmf2"]
-atlas = ExtResource("2_4ntmi")
-region = Rect2(48, 0, 24, 24)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_pisgm"]
-atlas = ExtResource("2_4ntmi")
-region = Rect2(72, 0, 24, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b1ygp"]
 atlas = ExtResource("2_4ntmi")
@@ -178,7 +170,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_k53q1")
 }],
-"loop": true,
+"loop": false,
 "name": &"die_left",
 "speed": 4.0
 }, {
@@ -195,7 +187,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_00tjw")
 }],
-"loop": true,
+"loop": false,
 "name": &"die_right",
 "speed": 4.0
 }, {
@@ -222,16 +214,10 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_dkpta")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_lfmf2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_pisgm")
 }],
 "loop": true,
 "name": &"idle_right",
-"speed": 3.0
+"speed": 2.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -346,8 +332,7 @@ script = ExtResource("1_onrkg")
 position = Vector2(0, -32)
 scale = Vector2(6, 6)
 sprite_frames = SubResource("SpriteFrames_6pogt")
-animation = &"idle_right"
-frame_progress = 0.937352
+animation = &"turn_left"
 
 [node name="Area2D" type="Area2D" parent="."]
 
