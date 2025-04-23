@@ -42,7 +42,7 @@ func _on_path_tile_clicked(tile: Area2D) -> void:
 	player.handle_tile_click(tile)
 
 func _on_path_tile_entered(tile: Area2D, area: Area2D):
-	if area == player.area and tile == path.end and end_unlocked:
+	if player and area == player.area and tile == path.end and end_unlocked:
 		print("reached end!")
 		emit_signal("player_reached_end")
 		path.clear()

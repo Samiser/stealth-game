@@ -3,7 +3,7 @@ extends Node2D
 @onready var area: Area2D = $Area2D
 
 func _collect() -> void:
-	await get_tree().create_timer(1.0).timeout
+	await get_tree().create_timer(0.1).timeout
 	self.free()
 
 func _ready() -> void:

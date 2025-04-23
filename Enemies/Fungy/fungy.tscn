@@ -177,7 +177,7 @@ position = Vector2(0, -34)
 scale = Vector2(6, 6)
 sprite_frames = SubResource("SpriteFrames_y2j3i")
 animation = &"idle_right"
-frame_progress = 0.633043
+frame_progress = 0.737031
 
 [node name="Hitbox" type="Area2D" parent="." groups=["attack"]]
 

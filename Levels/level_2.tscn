@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://d4e6patdp0uyn"]
+[gd_scene load_steps=9 format=3 uid="uid://d4e6patdp0uyn"]
 
 [ext_resource type="Script" uid="uid://jot4wtmkcpl6" path="res://Levels/level.gd" id="1_f4581"]
 [ext_resource type="PackedScene" uid="uid://rhqlwisvydf6" path="res://Levels/Path/path.tscn" id="2_bsuut"]
@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://dvxkco2lad8ri" path="res://Enemies/Fungy/fungy.tscn" id="5_kiou0"]
 [ext_resource type="Script" uid="uid://c70tm383gs6or" path="res://Levels/rock.gd" id="6_knhb2"]
 [ext_resource type="Texture2D" uid="uid://v564ywgp3aib" path="res://Levels/rock.png" id="7_n7577"]
-[ext_resource type="PackedScene" uid="uid://cja5rj3ixqma4" path="res://Items/Dagger/dagger.tscn" id="8_n7577"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fw6be"]
 radius = 11.5109
@@ -16,32 +15,20 @@ radius = 11.5109
 script = ExtResource("1_f4581")
 
 [node name="Path" parent="." node_paths=PackedStringArray("start", "end") instance=ExtResource("2_bsuut")]
-start = NodePath("PathNode2")
+start = NodePath("PathNode14")
 end = NodePath("PathNode13")
-
-[node name="PathNode" parent="Path" node_paths=PackedStringArray("neighbours") instance=ExtResource("3_kiou0")]
-position = Vector2(0, 384)
-neighbours = [NodePath("../PathNode4"), NodePath("../PathNode6")]
-
-[node name="PathNode2" parent="Path" node_paths=PackedStringArray("neighbours") instance=ExtResource("3_kiou0")]
-position = Vector2(192, 384)
-neighbours = [NodePath("../PathNode3")]
 
 [node name="PathNode3" parent="Path" node_paths=PackedStringArray("neighbours") instance=ExtResource("3_kiou0")]
 position = Vector2(192, 192)
-neighbours = [NodePath("../PathNode2"), NodePath("../PathNode4"), NodePath("../PathNode8")]
+neighbours = [NodePath("../PathNode4"), NodePath("../PathNode8"), NodePath("../PathNode14")]
 
 [node name="PathNode4" parent="Path" node_paths=PackedStringArray("neighbours") instance=ExtResource("3_kiou0")]
 position = Vector2(0, 192)
-neighbours = [NodePath("../PathNode3"), NodePath("../PathNode"), NodePath("../PathNode5")]
+neighbours = [NodePath("../PathNode3"), NodePath("../PathNode5")]
 
 [node name="PathNode5" parent="Path" node_paths=PackedStringArray("neighbours") instance=ExtResource("3_kiou0")]
 position = Vector2(-192, 192)
-neighbours = [NodePath("../PathNode4"), NodePath("../PathNode6"), NodePath("../PathNode7"), NodePath("../PathNode14")]
-
-[node name="PathNode6" parent="Path" node_paths=PackedStringArray("neighbours") instance=ExtResource("3_kiou0")]
-position = Vector2(-192, 384)
-neighbours = [NodePath("../PathNode5"), NodePath("../PathNode")]
+neighbours = [NodePath("../PathNode4"), NodePath("../PathNode7")]
 
 [node name="PathNode7" parent="Path" node_paths=PackedStringArray("neighbours") instance=ExtResource("3_kiou0")]
 position = Vector2(-192, 0)
@@ -71,24 +58,17 @@ position = Vector2(192, -384)
 neighbours = [NodePath("../PathNode12")]
 
 [node name="PathNode14" parent="Path" node_paths=PackedStringArray("neighbours") instance=ExtResource("3_kiou0")]
-position = Vector2(-384, 192)
-neighbours = [NodePath("../PathNode5")]
+position = Vector2(192, 384)
+neighbours = [NodePath("../PathNode3")]
 
 [node name="Collectables" type="Node2D" parent="."]
 
 [node name="Mushroom2" parent="Collectables" instance=ExtResource("4_bsuut")]
 position = Vector2(192, -174)
 
-[node name="Mushroom" parent="Collectables" instance=ExtResource("4_bsuut")]
-position = Vector2(-192, 400)
-
 [node name="Enemies" type="Node2D" parent="."]
 
 [node name="Fungy" parent="Enemies" instance=ExtResource("5_kiou0")]
-
-[node name="Fungy2" parent="Enemies" instance=ExtResource("5_kiou0")]
-position = Vector2(0, 384)
-flipped = true
 
 [node name="Rock" type="Node2D" parent="."]
 visible = false
@@ -105,6 +85,3 @@ texture = ExtResource("7_n7577")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Rock/Area2D"]
 shape = SubResource("CircleShape2D_fw6be")
-
-[node name="Dagger" parent="." instance=ExtResource("8_n7577")]
-position = Vector2(-384, 183)

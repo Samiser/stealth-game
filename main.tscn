@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://cax2xbdkfnc01"]
+[gd_scene load_steps=9 format=3 uid="uid://cax2xbdkfnc01"]
 
 [ext_resource type="Script" uid="uid://omirdg4jrmwy" path="res://main.gd" id="1_0xm2m"]
-[ext_resource type="PackedScene" uid="uid://wdoh6qthncgh" path="res://Levels/level_one.tscn" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://wdoh6qthncgh" path="res://Levels/level_1.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://dbf3pie0tu4ky" path="res://Map/map.tscn" id="2_h2yge"]
 [ext_resource type="PackedScene" uid="uid://dj4xa457yrikd" path="res://Player/player.tscn" id="3_1bvp3"]
-[ext_resource type="PackedScene" uid="uid://d4e6patdp0uyn" path="res://Levels/level_two.tscn" id="4_lquwl"]
+[ext_resource type="PackedScene" uid="uid://d4e6patdp0uyn" path="res://Levels/level_2.tscn" id="4_lquwl"]
+[ext_resource type="PackedScene" uid="uid://x2b51vd0k4cl" path="res://Levels/level_3.tscn" id="6_7mycd"]
 
 [sub_resource type="SystemFont" id="SystemFont_ig7tw"]
 font_names = PackedStringArray("Monospace")
@@ -26,6 +27,9 @@ position = Vector2(0, -95)
 
 [node name="LevelTwo" parent="Levels" instance=ExtResource("4_lquwl")]
 position = Vector2(-192, -1344)
+
+[node name="LevelThree" parent="Levels" instance=ExtResource("6_7mycd")]
+position = Vector2(960, -2303)
 
 [node name="Player" parent="." instance=ExtResource("3_1bvp3")]
 position = Vector2(-565, 309)
