@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://cja5rj3ixqma4"]
+
+[ext_resource type="Texture2D" uid="uid://b0u4y10nqqi8u" path="res://Items/Dagger/dagger.png" id="1_r7inb"]
+[ext_resource type="Script" uid="uid://myrrn68q1cou" path="res://Items/Dagger/dagger.gd" id="1_rc0sd"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_knpah"]
+radius = 16.0312
+
+[node name="Dagger" type="Node2D" groups=["dagger", "weapon"]]
+script = ExtResource("1_rc0sd")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(6, 6)
+texture = ExtResource("1_r7inb")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_knpah")

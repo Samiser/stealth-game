@@ -1,10 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://d4e6patdp0uyn"]
+[gd_scene load_steps=10 format=3 uid="uid://d4e6patdp0uyn"]
 
 [ext_resource type="Script" uid="uid://jot4wtmkcpl6" path="res://Levels/level.gd" id="1_f4581"]
 [ext_resource type="PackedScene" uid="uid://rhqlwisvydf6" path="res://Levels/Path/path.tscn" id="2_bsuut"]
 [ext_resource type="PackedScene" uid="uid://b3c0s5md2autq" path="res://Levels/Path/path_node.tscn" id="3_kiou0"]
 [ext_resource type="PackedScene" uid="uid://b8j5ipbs63ohq" path="res://Items/Mushroom/mushroom.tscn" id="4_bsuut"]
 [ext_resource type="PackedScene" uid="uid://dvxkco2lad8ri" path="res://Enemies/Fungy/fungy.tscn" id="5_kiou0"]
+[ext_resource type="Script" uid="uid://c70tm383gs6or" path="res://Levels/rock.gd" id="6_knhb2"]
+[ext_resource type="Texture2D" uid="uid://v564ywgp3aib" path="res://Levels/rock.png" id="7_n7577"]
+[ext_resource type="PackedScene" uid="uid://cja5rj3ixqma4" path="res://Items/Dagger/dagger.tscn" id="8_n7577"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fw6be"]
+radius = 11.5109
 
 [node name="LevelTwo" type="Node2D"]
 script = ExtResource("1_f4581")
@@ -31,7 +37,7 @@ neighbours = [NodePath("../PathNode3"), NodePath("../PathNode"), NodePath("../Pa
 
 [node name="PathNode5" parent="Path" node_paths=PackedStringArray("neighbours") instance=ExtResource("3_kiou0")]
 position = Vector2(-192, 192)
-neighbours = [NodePath("../PathNode4"), NodePath("../PathNode6"), NodePath("../PathNode7")]
+neighbours = [NodePath("../PathNode4"), NodePath("../PathNode6"), NodePath("../PathNode7"), NodePath("../PathNode14")]
 
 [node name="PathNode6" parent="Path" node_paths=PackedStringArray("neighbours") instance=ExtResource("3_kiou0")]
 position = Vector2(-192, 384)
@@ -64,17 +70,41 @@ neighbours = [NodePath("../PathNode11"), NodePath("../PathNode8"), NodePath("../
 position = Vector2(192, -384)
 neighbours = [NodePath("../PathNode12")]
 
+[node name="PathNode14" parent="Path" node_paths=PackedStringArray("neighbours") instance=ExtResource("3_kiou0")]
+position = Vector2(-384, 192)
+neighbours = [NodePath("../PathNode5")]
+
 [node name="Collectables" type="Node2D" parent="."]
 
 [node name="Mushroom2" parent="Collectables" instance=ExtResource("4_bsuut")]
 position = Vector2(192, -174)
 
 [node name="Mushroom" parent="Collectables" instance=ExtResource("4_bsuut")]
-position = Vector2(0, 400)
+position = Vector2(-192, 400)
 
 [node name="Enemies" type="Node2D" parent="."]
 
 [node name="Fungy" parent="Enemies" instance=ExtResource("5_kiou0")]
 
 [node name="Fungy2" parent="Enemies" instance=ExtResource("5_kiou0")]
-position = Vector2(-192, 384)
+position = Vector2(0, 384)
+flipped = true
+
+[node name="Rock" type="Node2D" parent="."]
+visible = false
+position = Vector2(-384, 192)
+scale = Vector2(6, 6)
+script = ExtResource("6_knhb2")
+
+[node name="Sprite2D" type="Sprite2D" parent="Rock"]
+z_index = 10
+position = Vector2(0, -0.666666)
+texture = ExtResource("7_n7577")
+
+[node name="Area2D" type="Area2D" parent="Rock"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rock/Area2D"]
+shape = SubResource("CircleShape2D_fw6be")
+
+[node name="Dagger" parent="." instance=ExtResource("8_n7577")]
+position = Vector2(-384, 183)

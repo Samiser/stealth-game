@@ -176,7 +176,8 @@ z_index = 10
 position = Vector2(0, -34)
 scale = Vector2(6, 6)
 sprite_frames = SubResource("SpriteFrames_y2j3i")
-animation = &"die_right"
+animation = &"idle_right"
+frame_progress = 0.633043
 
 [node name="Hitbox" type="Area2D" parent="." groups=["attack"]]
 
@@ -184,9 +185,9 @@ animation = &"die_right"
 shape = SubResource("CircleShape2D_5txrd")
 
 [node name="Vision" type="Area2D" parent="."]
+position = Vector2(100, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Vision"]
-position = Vector2(100, 0)
 shape = SubResource("RectangleShape2D_bex23")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
@@ -200,7 +201,7 @@ explosiveness = 0.95
 randomness = 1.0
 process_material = SubResource("ParticleProcessMaterial_oqq4u")
 
-[node name="Weakness" type="Area2D" parent="."]
+[node name="Weakness" type="Area2D" parent="." groups=["weakness"]]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Weakness"]
 polygon = PackedVector2Array(-9, -33, 7, -33, 7, 34, -9, 34, -10, 7, -36, 7, -36, -11, -10, -11)

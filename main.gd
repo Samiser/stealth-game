@@ -13,8 +13,23 @@ func _ready() -> void:
 		level.player = player
 		if level.has_signal("player_reached_end"):
 			level.player_reached_end.connect(_on_finished_level)
-	
+
 	levels.get_children()[current_level].start(player)
+
+func _input(event):
+	if event.is_action_pressed("reset"):
+		_reset_level()
+
+func _reset_level():
+	var old_level = levels.get_children()[current_level]
+	var old_level_position = old_level.global_position
+	var new_level = old_level.reset()
+	new_level.global_position = old_level_position
+	new_level.player = player
+	new_level.player_reached_end.connect(_on_finished_level)
+	player.path = new_level.path
+	player.teleport_to_tile(new_level.path.start)
+	player.reset()
 
 func _on_finished_level():
 	current_level += 1
